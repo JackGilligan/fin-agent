@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 import csv
+import logging
 import re
 from dataclasses import dataclass, field
 from datetime import date, datetime
 from pathlib import Path
 from typing import Iterable
+
+
+logger = logging.getLogger(__name__)
 
 
 ALLOWED_CATEGORIES = [
@@ -96,14 +100,26 @@ def load_transactions(data_dir: str | Path) -> list[Transaction]:
         csv_path = data_path / filename
         if not csv_path.exists():
             raise FileNotFoundError(f"Required input CSV is missing: {csv_path}")
-        for row in read_csv_rows(csv_path):
+        for row_number, row in enumerate(read_csv_rows(csv_path), start=2):
             try:
+                logger.debug("CSV input source=%s row=%d raw=%r", csv_path.name, row_number, row)
                 tx = build_transaction(row, csv_path.name)
             except (KeyError, ValueError, TypeError):
+                logger.debug("Skipping invalid CSV row source=%s row=%d raw=%r", csv_path.name, row_number, row, exc_info=True)
                 continue
+         
             key = tx.key
             if key in merged:
                 existing = merged[key]
+                logger.debug(
+                    "CSV duplicate merged source=%s row=%d into existing source=%s date=%s description=%r amount=%s",
+                    csv_path.name,
+                    row_number,
+                    existing.source_file,
+                    existing.date.isoformat(),
+                    existing.description,
+                    existing.amount,
+                )
                 if not existing.category and tx.category:
                     existing.category = tx.category
                 if not existing.flagged and tx.flagged:
@@ -129,6 +145,18 @@ def build_transaction(row: dict[str, str], source_file: str) -> Transaction:
         category = row.get("Category") or row.get("category") or ""
     tx = Transaction(date=tx_date, description=description, amount=amount, category=category or None, source_file=source_file)
     tx.flagged = infer_flag(tx)
+    logger.debug(
+        "Built transaction source=%s raw_date=%r date=%s raw_description=%r description=%r raw_amount=%r amount=%s category=%r flags=%r",
+        source_file,
+        date_raw,
+        tx.date.isoformat(),
+        row.get("Description") or row.get("description"),
+        tx.description,
+        raw_amount,
+        tx.amount,
+        tx.category,
+        tx.flagged,
+    )
     return tx
 
 
@@ -139,5 +167,19 @@ def dedupe_transactions(transactions: Iterable[Transaction]) -> list[Transaction
         if key not in seen:
             seen[key] = tx
         elif tx.category and not seen[key].category:
+            logger.debug(
+                "Deduplication kept categorized copy date=%s description=%r amount=%s category=%r",
+                tx.date.isoformat(),
+                tx.description,
+                tx.amount,
+                tx.category,
+            )
             seen[key].category = tx.category
+        else:
+            logger.debug(
+                "Deduplication removed exact duplicate date=%s description=%r amount=%s",
+                tx.date.isoformat(),
+                tx.description,
+                tx.amount,
+            )
     return sorted(seen.values(), key=lambda item: (item.date, item.description))

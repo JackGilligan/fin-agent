@@ -18,12 +18,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--recording", default="llm_recording.json", help="LLM recording JSON for replay and persistence")
     parser.add_argument("--provider", choices=["fake", "ollama"], default=os.environ.get("FINANCE_AGENT_PROVIDER", "fake"), help="Which LLM backend to use")
     parser.add_argument("--model", default=os.environ.get("FINANCE_AGENT_MODEL", "llama3.1:8b"), help="Model name to use for the real LLM provider")
+    parser.add_argument("--log-level", choices=["DEBUG", "INFO", "WARNING", "ERROR"], default="INFO", help="Logging verbosity")
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    logging.basicConfig(level=getattr(logging, args.log_level), format="%(levelname)s: %(message)s")
     recording_path = Path(args.recording)
     if args.replay or os.environ.get("FINANCE_AGENT_REPLAY") == "1":
         llm = ReplayLLMClient(recording_path)

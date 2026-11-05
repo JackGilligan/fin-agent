@@ -163,10 +163,6 @@
     {
       "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Categorization tool completed: 39 transaction(s) now have categories; 0 remain uncategorized.",
       "response": "{\n  \"tool\": \"compute_totals\"\n}"
-    },
-    {
-      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Entertainment\": 70.94, \"Food\": 791.84, \"Health\": 50.0, \"Healthcare\": 69.27, \"Home\": 606.01, \"Income\": 1800.0, \"Insurance\": 250.0, \"Other\": 12.0, \"Shopping\": 511.75, \"Transfer\": 640.0, \"Transportation\": 217.78, \"Utilities\": 89.99}, \"expenses\": 5109.58, \"income\": 15286.24, \"net\": 10176.66, \"savings_rate\": 0.67}",
-      "response": "{\n  \"tool\": \"write_report\"\n}"
     }
   ]
 }

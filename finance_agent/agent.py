@@ -54,16 +54,38 @@ def fallback_category(transaction: Transaction) -> str:
 
 
 def compute_totals(transactions: list[Transaction]) -> dict[str, float | dict[str, float]]:
-    income = sum(tx.amount for tx in transactions if tx.amount > 0)
-    expenses = sum(abs(tx.amount) for tx in transactions if tx.amount < 0)
-    net = income - expenses
-    savings_rate = (net / income) if income else 0.0
+    income = 0.0
+    expenses = 0.0
     by_category: dict[str, float] = {}
     for tx in transactions:
-        if tx.amount >= 0:
-            continue
+        income_contribution = tx.amount if tx.amount > 0 else 0.0
+        expense_contribution = abs(tx.amount) if tx.amount < 0 else 0.0
         category = tx.category or "Other"
-        by_category[category] = by_category.get(category, 0.0) + abs(tx.amount)
+        category_contribution = expense_contribution
+        logger.debug(
+            "Totals transaction date=%s description=%r amount=%s category=%r income_contribution=%s expense_contribution=%s category_contribution=%s",
+            tx.date.isoformat(),
+            tx.description,
+            tx.amount,
+            tx.category,
+            income_contribution,
+            expense_contribution,
+            category_contribution,
+        )
+        income += income_contribution
+        expenses += expense_contribution
+        if category_contribution:
+            by_category[category] = by_category.get(category, 0.0) + category_contribution
+    net = income - expenses
+    savings_rate = (net / income) if income else 0.0
+    logger.debug(
+        "Totals result income=%s expenses=%s net=%s savings_rate=%s by_category=%r",
+        round(income, 2),
+        round(expenses, 2),
+        round(net, 2),
+        round(savings_rate, 2),
+        {k: round(v, 2) for k, v in sorted(by_category.items())},
+    )
     return {
         "income": round(income, 2),
         "expenses": round(expenses, 2),
@@ -103,6 +125,21 @@ def categorize_uncategorized(transactions: list[Transaction], llm: LLMClient) ->
                 raw_response[:200],
             )
             category = fallback_category(tx)
+            logger.warning("Fallback category for %r is %r", tx.description, category)
+            logger.debug(
+                "Transaction category determined by fallback date=%s description=%r category=%r",
+                tx.date.isoformat(),
+                tx.description,
+                category,
+            )
+        else:
+            logger.debug(
+                "Transaction category determined by LLM date=%s description=%r category=%r response=%r",
+                tx.date.isoformat(),
+                tx.description,
+                category,
+                raw_response[:200],
+            )
         tx.category = category
     return transactions
 
@@ -128,7 +165,16 @@ def build_report(transactions: list[Transaction]) -> dict[str, Any]:
         ],
         "summary": build_summary(totals),
     }
+    for tx in report["transactions"]:
+        logger.debug("Report transaction serialized %r", tx)
     return report
+
+
+def write_report(report: dict[str, Any], output_path: str | Path) -> None:
+    out_path = Path(output_path)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    logger.debug("Report JSON written path=%s transaction_count=%d", out_path, len(report["transactions"]))
 
 
 def run_agent(data_dir: str | Path, output_path: str | Path, llm: LLMClient, step_limit: int = 6) -> dict[str, Any]:
@@ -176,21 +222,18 @@ def run_agent(data_dir: str | Path, output_path: str | Path, llm: LLMClient, ste
             continue
         if tool_name == "compute_totals":
             state["totals"] = compute_totals(state["transactions"])
-            state["observation"] = f"Computed totals: {json.dumps(state['totals'], sort_keys=True)}"
+            state["observation"] = "Computed totals successfully!"
             logger.info("Computed transaction totals")
             continue
         if tool_name == "write_report":
             report = build_report(state["transactions"])
-            out_path = Path(output_path)
-            out_path.parent.mkdir(parents=True, exist_ok=True)
-            out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
-            logger.info("Wrote report to %s", out_path)
+            write_report(report, output_path)
+            logger.info("Wrote report to %s", output_path)
             return report
     logger.warning("Reached the %d-step limit; writing a report with the current results", step_limit)
     report = build_report(state["transactions"])
+    write_report(report, output_path)
     out_path = Path(output_path)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
     logger.info("Wrote report to %s", out_path)
     return report
 
