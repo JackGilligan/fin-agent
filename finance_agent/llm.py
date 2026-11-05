@@ -64,12 +64,42 @@ class ReplayLLMClient(LLMClient):
 
     def complete(self, prompt: str) -> str:
         if self._index >= len(self._responses):
-            return json.dumps({"tool": "write_report", "arguments": {}})
+            raise RuntimeError(
+                f"LLM recording {self.recording_path} has no response for call {self._index + 1}"
+            )
         response = self._responses[self._index]
+        if isinstance(response, dict) and "prompt" in response:
+            recorded_prompt = response["prompt"]
+            if recorded_prompt != prompt:
+                raise RuntimeError(
+                    f"LLM recording prompt mismatch at call {self._index + 1}: "
+                    f"expected {recorded_prompt[:120]!r}, got {prompt[:120]!r}"
+                )
         self._index += 1
         if isinstance(response, dict):
             if "response" in response:
-                return str(response["response"])
+                response_text = str(response["response"])
+                parsed_response = parse_json_response(response_text)
+                if prompt.startswith("Categorize this one transaction") and (
+                    isinstance(parsed_response, dict)
+                    and "tool" in parsed_response
+                    and "category" not in parsed_response
+                ):
+                    raise RuntimeError(
+                        f"LLM recording response {self._index} is a tool choice, "
+                        "but the current call expects a transaction category"
+                    )
+                if prompt.startswith("Select one of these tools") and (
+                    isinstance(parsed_response, dict)
+                    and "category" in parsed_response
+                    and "tool" not in parsed_response
+                    and "name" not in parsed_response
+                ):
+                    raise RuntimeError(
+                        f"LLM recording response {self._index} is a category, "
+                        "but the current call expects a tool choice"
+                    )
+                return response_text
             if "tool" in response:
                 return json.dumps({"tool": response["tool"], "arguments": response.get("arguments", {})})
         return str(response)

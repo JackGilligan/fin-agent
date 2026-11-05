@@ -225,8 +225,9 @@ def test_recording_and_replay_reproduce_report_without_live_model(tmp_path):
     live_llm = RecordingLLMClient(
         ScriptedLLMClient([
             {"tool": "categorize_uncategorized"},
-            {"category": "Food"},
             {"category": "Income"},
+            {"category": "Income"},
+            {"category": "Food"},
             {"tool": "compute_totals"},
             {"tool": "write_report"},
         ]),
@@ -237,9 +238,40 @@ def test_recording_and_replay_reproduce_report_without_live_model(tmp_path):
     replay_report = run_agent(data_dir, replay_output, ReplayLLMClient(recording_path))
 
     saved_recording = json.loads(recording_path.read_text(encoding="utf-8"))
-    assert len(saved_recording["responses"]) == 5
+    assert len(saved_recording["responses"]) == 6
     assert replay_report == live_report
     assert json.loads(replay_output.read_text(encoding="utf-8")) == live_report
+
+
+def test_replay_rejects_mismatched_prompts_and_exhausted_recordings(tmp_path):
+    recording_path = tmp_path / "llm_recording.json"
+    recording_path.write_text(
+        json.dumps({"responses": [{"prompt": "recorded prompt", "response": '{"category":"Food"}'}]}),
+        encoding="utf-8",
+    )
+    replay = ReplayLLMClient(recording_path)
+
+    with pytest.raises(RuntimeError, match="prompt mismatch"):
+        replay.complete("different prompt")
+    assert replay.complete("recorded prompt") == '{"category":"Food"}'
+    with pytest.raises(RuntimeError, match="no response for call 2"):
+        replay.complete("another call")
+
+
+def test_replay_rejects_tool_response_recorded_for_category_prompt(tmp_path):
+    recording_path = tmp_path / "misaligned-recording.json"
+    recording_path.write_text(
+        json.dumps({
+            "responses": [{
+                "prompt": "Categorize this one transaction: details",
+                "response": '{"tool":"compute_totals","arguments":{}}',
+            }]
+        }),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(RuntimeError, match="expects a transaction category"):
+        ReplayLLMClient(recording_path).complete("Categorize this one transaction: details")
 
 
 def test_ollama_client_uses_json_mode_temperature_zero_and_returns_text(monkeypatch):
@@ -274,13 +306,23 @@ def test_cli_returns_zero_on_success_and_nonzero_on_missing_input(tmp_path, monk
     data_dir = tmp_path / "data"
     _write_sample_inputs(data_dir)
     output_path = tmp_path / "report.json"
+    recording_path = tmp_path / "cli-recording.json"
     monkeypatch.setattr(
         sys,
         "argv",
-        ["finance_agent", "--data", str(data_dir), "--out", str(output_path)],
+        [
+            "finance_agent",
+            "--data",
+            str(data_dir),
+            "--out",
+            str(output_path),
+            "--recording",
+            str(recording_path),
+        ],
     )
     assert main() == 0
     assert output_path.exists()
+    assert recording_path.exists()
 
     missing_data = tmp_path / "missing"
     missing_data.mkdir()

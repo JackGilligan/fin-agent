@@ -2,39 +2,171 @@
   "responses": [
     {
       "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: No tools have run yet.",
-      "response": "{\"tool\": \"categorize_uncategorized\", \"arguments\": {}}"
+      "response": "{\n  \"tool\": \"categorize_uncategorized\"\n}"
     },
     {
-      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-01\nDescription: Salary\nAmount: 100.0",
-      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-01\nDescription: Salary\nAmount: 3000.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
     },
     {
-      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-03\nDescription: Interest Credit\nAmount: 1.0",
-      "response": "{\"tool\": \"write_report\", \"arguments\": {}}"
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-01\nDescription: Salary Deposit\nAmount: 3000.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
     },
     {
-      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-04\nDescription: Corner Cafe\nAmount: -4.0",
-      "response": "{\"tool\": \"invalid\", \"arguments\": {}}"
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-02\nDescription: Grocery Store\nAmount: -120.5",
+      "response": "{\n  \"category\": \"Food\"\n}"
     },
     {
-      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Categorization tool completed: 3 transaction(s) now have categories; 0 remain uncategorized.",
-      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-02\nDescription: WHOLEFDS MKT #10452\nAmount: -87.34",
+      "response": "{\n  \"category\": \"Food\"\n}"
     },
     {
-      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Food\": 20.0, \"Other\": 4.0}, \"expenses\": 24.0, \"income\": 101.0, \"net\": 77.0, \"savings_rate\": 0.76}",
-      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-03\nDescription: Gas Station\nAmount: -45.0",
+      "response": "{\n  \"category\": \"Transportation\"\n}"
     },
     {
-      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Food\": 20.0, \"Other\": 4.0}, \"expenses\": 24.0, \"income\": 101.0, \"net\": 77.0, \"savings_rate\": 0.76}",
-      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-03\nDescription: SHELL OIL 5748291\nAmount: -52.18",
+      "response": "{\n  \"category\": \"Transportation\"\n}"
     },
     {
-      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Food\": 20.0, \"Other\": 4.0}, \"expenses\": 24.0, \"income\": 101.0, \"net\": 77.0, \"savings_rate\": 0.76}",
-      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-04\nDescription: Restaurant\nAmount: -35.75",
+      "response": "{\n  \"category\": \"Food\"\n}"
     },
     {
-      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Food\": 20.0, \"Other\": 4.0}, \"expenses\": 24.0, \"income\": 101.0, \"net\": 77.0, \"savings_rate\": 0.76}",
-      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-05\nDescription: AMZN MKTP US*AB12C3D4E\nAmount: -129.99",
+      "response": "{\n  \"category\": \"Shopping\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-05\nDescription: Amazon Purchase\nAmount: -89.99",
+      "response": "{\n  \"category\": \"Shopping\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-06\nDescription: Netflix Subscription\nAmount: -15.99",
+      "response": "{\n  \"category\": \"Entertainment\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-07\nDescription: Pharmacy\nAmount: -25.3",
+      "response": "{\n  \"category\": \"Healthcare\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-07\nDescription: UBER *TRIP HELP.UBER.COM\nAmount: -23.4",
+      "response": "{\n  \"category\": \"Transportation\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-08\nDescription: Uber Ride\nAmount: -18.5",
+      "response": "{\n  \"category\": \"Transportation\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-09\nDescription: Coffee Shop\nAmount: -4.5",
+      "response": "{\n  \"category\": \"Food\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-09\nDescription: TST* JOE'S PIZZA DOWNTOWN\nAmount: -34.5",
+      "response": "{\n  \"category\": \"Food\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-10\nDescription: Home Depot\nAmount: -156.78",
+      "response": "{\n  \"category\": \"Home\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-11\nDescription: Spotify USA\nAmount: -9.99",
+      "response": "{\n  \"category\": \"Entertainment\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-13\nDescription: CHECKCARD 1314 SAFEWAY #2910\nAmount: -64.22",
+      "response": "{\n  \"category\": \"Food\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-15\nDescription: DOORDASH*CHIPOTLE\nAmount: -18.99",
+      "response": "{\n  \"category\": \"Food\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-15\nDescription: Freelance Payment\nAmount: 500.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-15\nDescription: Freelance Work\nAmount: 500.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-15\nDescription: Salary\nAmount: 3000.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-16\nDescription: VENMO *JOHN SMITH\nAmount: -40.0",
+      "response": "{\n  \"category\": \"Transfer\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-17\nDescription: ATM WITHDRAWAL 001234\nAmount: -100.0",
+      "response": "{\n  \"category\": \"Transfer\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-19\nDescription: WHOLEFDS MKT #10452\nAmount: -87.34",
+      "response": "{\n  \"category\": \"Food\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-20\nDescription: Consulting\nAmount: 750.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-20\nDescription: Consulting Fee\nAmount: 750.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-20\nDescription: TRANSFER TO SAVINGS\nAmount: -500.0",
+      "response": "{\n  \"category\": \"Transfer\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-21\nDescription: POS DEBIT THE HOME DEPOT 123\nAmount: -89.0",
+      "response": "{\n  \"category\": \"Home\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-22\nDescription: ZELLE PAYMENT TO LANDLORD\nAmount: -1800.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-24\nDescription: UNKNOWN MERCHANT 998877\nAmount: -12.0",
+      "response": "{\n  \"category\": \"Other\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-25\nDescription: Dividend Payment\nAmount: 150.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-25\nDescription: Refund AMAZON.COM\nAmount: 34.99",
+      "response": "{\n  \"category\": \"Shopping\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-26\nDescription: ACH CREDIT PAYROLL ACME CORP\nAmount: 3200.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-28\nDescription: LYFT *RIDE\nAmount: -15.2",
+      "response": "{\n  \"category\": \"Transportation\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-29\nDescription: COSTCO WHSE #0421\nAmount: -156.78",
+      "response": "{\n  \"category\": \"Shopping\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-30\nDescription: Freelance Work\nAmount: 400.0",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-30\nDescription: INTEREST CREDIT\nAmount: 1.25",
+      "response": "{\n  \"category\": \"Income\"\n}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-31\nDescription: PENDING AUTH TARGET T-8821\nAmount: -0.0",
+      "response": "{\n  \"category\": \"Other\"\n}"
+    },
+    {
+      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Categorization tool completed: 39 transaction(s) now have categories; 0 remain uncategorized.",
+      "response": "{\n  \"tool\": \"compute_totals\"\n}"
+    },
+    {
+      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Entertainment\": 70.94, \"Food\": 791.84, \"Health\": 50.0, \"Healthcare\": 69.27, \"Home\": 606.01, \"Income\": 1800.0, \"Insurance\": 250.0, \"Other\": 12.0, \"Shopping\": 511.75, \"Transfer\": 640.0, \"Transportation\": 217.78, \"Utilities\": 89.99}, \"expenses\": 5109.58, \"income\": 15286.24, \"net\": 10176.66, \"savings_rate\": 0.67}",
+      "response": "{\n  \"tool\": \"write_report\"\n}"
     }
   ]
 }
