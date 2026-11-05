@@ -125,6 +125,7 @@ def categorize_uncategorized(transactions: list[Transaction], llm: LLMClient) ->
                 raw_response[:200],
             )
             category = fallback_category(tx)
+            logger.warning("Fallback category for %r is %r", tx.description, category)
             logger.debug(
                 "Transaction category determined by fallback date=%s description=%r category=%r",
                 tx.date.isoformat(),
@@ -221,7 +222,7 @@ def run_agent(data_dir: str | Path, output_path: str | Path, llm: LLMClient, ste
             continue
         if tool_name == "compute_totals":
             state["totals"] = compute_totals(state["transactions"])
-            state["observation"] = f"Computed totals: {json.dumps(state['totals'], sort_keys=True)}"
+            state["observation"] = "Computed totals successfully!"
             logger.info("Computed transaction totals")
             continue
         if tool_name == "write_report":
