@@ -1,0 +1,433 @@
+{
+  "totals": {
+    "income": 15286.24,
+    "expenses": 5109.58,
+    "net": 10176.66,
+    "savings_rate": 0.67
+  },
+  "by_category": {
+    "Entertainment": 70.94,
+    "Food": 791.84,
+    "Health": 50.0,
+    "Healthcare": 69.27,
+    "Home": 606.01,
+    "Income": 1800.0,
+    "Insurance": 250.0,
+    "Other": 12.0,
+    "Shopping": 511.75,
+    "Transfer": 640.0,
+    "Transportation": 217.78,
+    "Utilities": 89.99
+  },
+  "flagged": [
+    {
+      "description": "Salary",
+      "reason": "Large transaction amount"
+    },
+    {
+      "description": "Salary Deposit",
+      "reason": "Large transaction amount"
+    },
+    {
+      "description": "Salary",
+      "reason": "Large transaction amount"
+    },
+    {
+      "description": "UNKNOWN MERCHANT 998877",
+      "reason": "Unclear merchant"
+    },
+    {
+      "description": "Refund AMAZON.COM",
+      "reason": "Refund transaction"
+    },
+    {
+      "description": "ACH CREDIT PAYROLL ACME CORP",
+      "reason": "Large transaction amount"
+    },
+    {
+      "description": "PENDING AUTH TARGET T-8821",
+      "reason": "Zero-amount pending row; Unclear merchant"
+    }
+  ],
+  "transactions": [
+    {
+      "date": "2024-01-01",
+      "description": "Grocery Store",
+      "amount": -120.5,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-01",
+      "description": "Salary",
+      "amount": 3000.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-01",
+      "description": "Salary Deposit",
+      "amount": 3000.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-02",
+      "description": "Gas Station",
+      "amount": -45.0,
+      "category": "Transportation"
+    },
+    {
+      "date": "2024-01-02",
+      "description": "Grocery Store",
+      "amount": -120.5,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-02",
+      "description": "WHOLEFDS MKT #10452",
+      "amount": -87.34,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-03",
+      "description": "Gas Station",
+      "amount": -45.0,
+      "category": "Transportation"
+    },
+    {
+      "date": "2024-01-03",
+      "description": "Restaurant",
+      "amount": -35.75,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-03",
+      "description": "SHELL OIL 5748291",
+      "amount": -52.18,
+      "category": "Transportation"
+    },
+    {
+      "date": "2024-01-04",
+      "description": "Amazon Purchase",
+      "amount": -89.99,
+      "category": "Shopping"
+    },
+    {
+      "date": "2024-01-04",
+      "description": "Restaurant",
+      "amount": -35.75,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-04",
+      "description": "SQ *BLUE BOTTLE COFFEE",
+      "amount": -6.75,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-05",
+      "description": "AMZN MKTP US*AB12C3D4E",
+      "amount": -129.99,
+      "category": "Shopping"
+    },
+    {
+      "date": "2024-01-05",
+      "description": "Amazon Purchase",
+      "amount": -89.99,
+      "category": "Shopping"
+    },
+    {
+      "date": "2024-01-05",
+      "description": "Netflix Subscription",
+      "amount": -15.99,
+      "category": "Entertainment"
+    },
+    {
+      "date": "2024-01-06",
+      "description": "Netflix Subscription",
+      "amount": -15.99,
+      "category": "Entertainment"
+    },
+    {
+      "date": "2024-01-06",
+      "description": "Netflix.com",
+      "amount": -15.99,
+      "category": "Entertainment"
+    },
+    {
+      "date": "2024-01-06",
+      "description": "Pharmacy",
+      "amount": -25.3,
+      "category": "Healthcare"
+    },
+    {
+      "date": "2024-01-07",
+      "description": "Pharmacy",
+      "amount": -25.3,
+      "category": "Healthcare"
+    },
+    {
+      "date": "2024-01-07",
+      "description": "UBER *TRIP HELP.UBER.COM",
+      "amount": -23.4,
+      "category": "Transportation"
+    },
+    {
+      "date": "2024-01-07",
+      "description": "Uber Ride",
+      "amount": -18.5,
+      "category": "Transportation"
+    },
+    {
+      "date": "2024-01-08",
+      "description": "CVS/PHARMACY #4412",
+      "amount": -18.67,
+      "category": "Healthcare"
+    },
+    {
+      "date": "2024-01-08",
+      "description": "Coffee Shop",
+      "amount": -4.5,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-08",
+      "description": "Uber Ride",
+      "amount": -18.5,
+      "category": "Transportation"
+    },
+    {
+      "date": "2024-01-09",
+      "description": "Coffee Shop",
+      "amount": -4.5,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-09",
+      "description": "Home Depot",
+      "amount": -156.78,
+      "category": "Home"
+    },
+    {
+      "date": "2024-01-09",
+      "description": "TST* JOE'S PIZZA DOWNTOWN",
+      "amount": -34.5,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-10",
+      "description": "HOMEDEPOT.COM",
+      "amount": -203.45,
+      "category": "Home"
+    },
+    {
+      "date": "2024-01-10",
+      "description": "Home Depot",
+      "amount": -156.78,
+      "category": "Home"
+    },
+    {
+      "date": "2024-01-10",
+      "description": "Restaurant",
+      "amount": -42.0,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-11",
+      "description": "Gym Membership",
+      "amount": -50.0,
+      "category": "Health"
+    },
+    {
+      "date": "2024-01-11",
+      "description": "Spotify USA",
+      "amount": -9.99,
+      "category": "Entertainment"
+    },
+    {
+      "date": "2024-01-12",
+      "description": "PAYPAL *ETSYSHOP",
+      "amount": -45.0,
+      "category": "Shopping"
+    },
+    {
+      "date": "2024-01-12",
+      "description": "Spotify Subscription",
+      "amount": -9.99,
+      "category": "Entertainment"
+    },
+    {
+      "date": "2024-01-13",
+      "description": "CHECKCARD 1314 SAFEWAY #2910",
+      "amount": -64.22,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-13",
+      "description": "Grocery Store",
+      "amount": -95.25,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-14",
+      "description": "Car Insurance",
+      "amount": -125.0,
+      "category": "Insurance"
+    },
+    {
+      "date": "2024-01-14",
+      "description": "GEICO AUTO INSURANCE",
+      "amount": -125.0,
+      "category": "Insurance"
+    },
+    {
+      "date": "2024-01-15",
+      "description": "DOORDASH*CHIPOTLE",
+      "amount": -18.99,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-15",
+      "description": "Freelance Payment",
+      "amount": 500.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-15",
+      "description": "Freelance Work",
+      "amount": 500.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-15",
+      "description": "Restaurant",
+      "amount": -28.5,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-15",
+      "description": "Salary",
+      "amount": 3000.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-16",
+      "description": "VENMO *JOHN SMITH",
+      "amount": -40.0,
+      "category": "Transfer"
+    },
+    {
+      "date": "2024-01-17",
+      "description": "ATM WITHDRAWAL 001234",
+      "amount": -100.0,
+      "category": "Transfer"
+    },
+    {
+      "date": "2024-01-18",
+      "description": "APPLE.COM/BILL",
+      "amount": -2.99,
+      "category": "Entertainment"
+    },
+    {
+      "date": "2024-01-19",
+      "description": "WHOLEFDS MKT #10452",
+      "amount": -87.34,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-20",
+      "description": "Consulting",
+      "amount": 750.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-20",
+      "description": "Consulting Fee",
+      "amount": 750.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-20",
+      "description": "TRANSFER TO SAVINGS",
+      "amount": -500.0,
+      "category": "Transfer"
+    },
+    {
+      "date": "2024-01-21",
+      "description": "POS DEBIT THE HOME DEPOT 123",
+      "amount": -89.0,
+      "category": "Home"
+    },
+    {
+      "date": "2024-01-22",
+      "description": "ZELLE PAYMENT TO LANDLORD",
+      "amount": -1800.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-23",
+      "description": "STARBUCKS STORE 11234",
+      "amount": -5.45,
+      "category": "Food"
+    },
+    {
+      "date": "2024-01-24",
+      "description": "UNKNOWN MERCHANT 998877",
+      "amount": -12.0,
+      "category": "Other"
+    },
+    {
+      "date": "2024-01-25",
+      "description": "Dividend Payment",
+      "amount": 150.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-25",
+      "description": "Refund AMAZON.COM",
+      "amount": 34.99,
+      "category": "Shopping"
+    },
+    {
+      "date": "2024-01-26",
+      "description": "ACH CREDIT PAYROLL ACME CORP",
+      "amount": 3200.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-27",
+      "description": "COMCAST CABLE COMM",
+      "amount": -89.99,
+      "category": "Utilities"
+    },
+    {
+      "date": "2024-01-28",
+      "description": "LYFT *RIDE",
+      "amount": -15.2,
+      "category": "Transportation"
+    },
+    {
+      "date": "2024-01-29",
+      "description": "COSTCO WHSE #0421",
+      "amount": -156.78,
+      "category": "Shopping"
+    },
+    {
+      "date": "2024-01-30",
+      "description": "Freelance Work",
+      "amount": 400.0,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-30",
+      "description": "INTEREST CREDIT",
+      "amount": 1.25,
+      "category": "Income"
+    },
+    {
+      "date": "2024-01-31",
+      "description": "PENDING AUTH TARGET T-8821",
+      "amount": -0.0,
+      "category": "Other"
+    }
+  ],
+  "summary": "This month generated $15,286.24 in income and spent $5,109.58, for a net of $10,176.66. The largest expense category was Income at $1,800.00."
+}

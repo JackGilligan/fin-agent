@@ -1,0 +1,19 @@
+Date,Description,Amount,Balance,Type
+2024-01-01,Salary Deposit,3000.00,5000.00,Credit
+2024-01-02,Grocery Store,-120.50,4879.50,Debit
+2024-01-03,Gas Station,-45.00,4834.50,Debit
+2024-01-04,Restaurant,-35.75,4798.75,Debit
+2024-01-05,Amazon Purchase,-89.99,4708.76,Debit
+2024-01-06,Netflix Subscription,-15.99,4692.77,Debit
+2024-01-07,Pharmacy,-25.30,4667.47,Debit
+2024-01-08,Uber Ride,-18.50,4648.97,Debit
+2024-01-09,Coffee Shop,-4.50,4644.47,Debit
+2024-01-10,Home Depot,-156.78,4487.69,Debit
+2024-01-11,Gym Membership,-50.00,4437.69,Debit
+2024-01-12,Spotify Subscription,-9.99,4427.70,Debit
+2024-01-13,Grocery Store,-95.25,4332.45,Debit
+2024-01-14,Car Insurance,-125.00,4207.45,Debit
+2024-01-15,Restaurant,-28.50,4178.95,Debit
+2024-01-15,Freelance Payment,500.00,4678.95,Credit
+2024-01-20,Consulting Fee,750.00,5428.95,Credit
+2024-01-25,Dividend Payment,150.00,5578.95,Credit

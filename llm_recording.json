@@ -1,0 +1,40 @@
+{
+  "responses": [
+    {
+      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: No tools have run yet.",
+      "response": "{\"tool\": \"categorize_uncategorized\", \"arguments\": {}}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-01\nDescription: Salary\nAmount: 100.0",
+      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-03\nDescription: Interest Credit\nAmount: 1.0",
+      "response": "{\"tool\": \"write_report\", \"arguments\": {}}"
+    },
+    {
+      "prompt": "Categorize this one transaction. Return only a JSON object with a 'category' field. The category must be exactly one of: Food, Transportation, Entertainment, Healthcare, Home, Shopping, Utilities, Insurance, Travel, Transfer, Health, Income, Other. For a refund, transfer, income, or pending transaction, choose the closest applicable category.\nDate: 2024-01-04\nDescription: Corner Cafe\nAmount: -4.0",
+      "response": "{\"tool\": \"invalid\", \"arguments\": {}}"
+    },
+    {
+      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Categorization tool completed: 3 transaction(s) now have categories; 0 remain uncategorized.",
+      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+    },
+    {
+      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Food\": 20.0, \"Other\": 4.0}, \"expenses\": 24.0, \"income\": 101.0, \"net\": 77.0, \"savings_rate\": 0.76}",
+      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+    },
+    {
+      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Food\": 20.0, \"Other\": 4.0}, \"expenses\": 24.0, \"income\": 101.0, \"net\": 77.0, \"savings_rate\": 0.76}",
+      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+    },
+    {
+      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Food\": 20.0, \"Other\": 4.0}, \"expenses\": 24.0, \"income\": 101.0, \"net\": 77.0, \"savings_rate\": 0.76}",
+      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+    },
+    {
+      "prompt": "Select one of these tools for the finance dataset: categorize_uncategorized, compute_totals, write_report. Return JSON with a 'tool' field. Use the previous tool observation to decide what to do next.\nPrevious tool observation: Computed totals: {\"by_category\": {\"Food\": 20.0, \"Other\": 4.0}, \"expenses\": 24.0, \"income\": 101.0, \"net\": 77.0, \"savings_rate\": 0.76}",
+      "response": "{\"tool\": \"compute_totals\", \"arguments\": {}}"
+    }
+  ]
+}
