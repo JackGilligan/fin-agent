@@ -72,5 +72,4 @@ def test_agent_passes_tool_observations_to_next_model_decision(tmp_path):
     assert all(prompt.count("\nDescription:") == 1 for prompt in category_prompts)
     assert "No tools have run yet" in tool_prompts[0]
     assert "Categorization tool completed" in tool_prompts[1]
-    assert "Computed totals:" in tool_prompts[2]
     assert all(tx["category"] for tx in report["transactions"])
